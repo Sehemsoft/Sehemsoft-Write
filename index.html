@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sehemsoft Notepad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="toolbar">
+            <div class="toolbar-group">
+                <button id="newBtn" class="btn" title="Yeni (Ctrl+N)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14,2 14,8 20,8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    Yeni
+                </button>
+                <button id="openBtn" class="btn" title="Aç (Ctrl+O)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14,2 14,8 20,8"></polyline>
+                    </svg>
+                    Aç
+                </button>
+                <button id="saveBtn" class="btn" title="Kaydet (Ctrl+S)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17,21 17,13 7,13 7,21"></polyline>
+                        <polyline points="7,3 7,8 15,8"></polyline>
+                    </svg>
+                    Kaydet
+                </button>
+                <button id="saveAsBtn" class="btn" title="Farklı Kaydet (Ctrl+Shift+S)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17,21 17,13 7,13 7,21"></polyline>
+                        <polyline points="7,3 7,8 15,8"></polyline>
+                    </svg>
+                    Farklı Kaydet
+                </button>
+            </div>
+            <div class="toolbar-group">
+                <button id="boldBtn" class="btn" title="Kalın (Ctrl+B)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                        <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                    </svg>
+                </button>
+                <button id="italicBtn" class="btn" title="İtalik (Ctrl+I)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="4" x2="10" y2="4"></line>
+                        <line x1="14" y1="20" x2="5" y2="20"></line>
+                        <line x1="15" y1="4" x2="9" y2="20"></line>
+                    </svg>
+                </button>
+                <button id="underlineBtn" class="btn" title="Altı çizili (Ctrl+U)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3"></path>
+                        <line x1="4" y1="21" x2="20" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="strikeBtn" class="btn" title="Üstü çizili">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 4v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4"></path>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="toolbar-group">
+                <select id="fontSize" class="font-select">
+                    <option value="3">Normal</option>
+                    <option value="1">Küçük</option>
+                    <option value="5">Büyük</option>
+                    <option value="7">Çok Büyük</option>
+                    <option value="custom">Özel...</option>
+                </select>
+                <input type="number" id="customSize" class="custom-size-input" placeholder="px" min="8" max="72" style="display: none; width: 60px;">
+                <button id="applyCustomSize" class="btn" style="display: none; padding: 4px 8px; font-size: 12px;">Uygula</button>
+                <span class="color-label">Yazı Rengi:</span>
+                <input type="color" id="textColor" class="color-picker" title="Metin rengi">
+                <span class="color-label">Arka Plan:</span>
+                <input type="color" id="bgColor" class="color-picker" title="Arka plan rengi">
+            </div>
+            <div class="toolbar-group">
+                <button id="cutBtn" class="btn" title="Kes (Ctrl+X)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                    </svg>
+                </button>
+                <button id="copyBtn" class="btn" title="Kopyala (Ctrl+C)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <button id="pasteBtn" class="btn" title="Yapıştır (Ctrl+V)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="toolbar-group">
+                <button id="undoBtn" class="btn" title="Geri Al (Ctrl+Z)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1,4 1,10 7,10"></polyline>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                </button>
+                <button id="redoBtn" class="btn" title="İleri Al (Ctrl+Y)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23,4 23,10 17,10"></polyline>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="toolbar-group status-info">
+                <span id="statusText">Hazır</span>
+                <span id="lineInfo">Satır: 1, Sütun: 1</span>
+            </div>
+        </header>
+        
+        <main class="editor-container">
+            <div id="editor" contenteditable="true" class="rich-editor" placeholder="Metninizi buraya yazın veya dosya açın..."></div>
+        </main>
+    </div>
+    
+    <script src="renderer.js"></script>
+</body>
+</html>
